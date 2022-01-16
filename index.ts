@@ -8,28 +8,27 @@
 
 type Resolvable<T> = T | PromiseLike<T>;
 
-export class Completer<T> {
-    public promise: Promise<T>;
-
+export class Completer<T> extends Promise<T> {
     // we have to type assert here
-    public resolve!: (value: Resolvable<T>) => void;
+    public complete!: (value: Resolvable<T>) => void;
     public reject!: (reason?: any) => void;
 
     constructor(options?: { timeout?: number; error?: Error }) {
-        this.promise = new Promise((resolve, reject) => {
-            this.resolve = resolve;
+        super((resolve, reject) => {
+            this.complete = resolve;
             this.reject = reject;
-        });
-        if (options) {
-            if (options.timeout) {
-                setTimeout(() => {
-                    if (options.error) {
-                        return this.reject(options.error);
-                    }
 
-                    return this.reject(new Error('Completer timeout error'));
-                }, options.timeout);
+            if (options) {
+                if (options.timeout) {
+                    setTimeout(() => {
+                        if (options.error) {
+                            return this.reject(options.error);
+                        }
+
+                        return this.reject(new Error('Completer timeout error'));
+                    }, options.timeout);
+                }
             }
-        }
+        });
     }
 }
