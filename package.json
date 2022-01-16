@@ -1,0 +1,19 @@
+{
+  "name": "@ashwynh21/completer",
+  "version": "1.0.5",
+  "description": "A simple utility class based on the dart completer that allows de-contextualizing promises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "completer",
+    "promise"
+  ],
+  "author": "Ashwyn Horton (https://github.com/ashwynh21)",
+  "repository": "https://github.com/ashwynh21/completer.git",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
