@@ -13,7 +13,7 @@ It also has ```TS``` support.
 The ```Completer``` class can be used on both ```Browser``` and ```NodeJS``` since it
 is based on ```Promise``` instances. All it does is wrap a promise instance along with
 a few other things that allow you to access the control properties of the promise instance
-outside. i.e. ```resolve``` and ```reject```.
+outside. i.e. ```complete``` and ```reject```.
 
 Here is a set of use cases:
 
@@ -50,11 +50,11 @@ const api_call = async () => {
 // before calling the api request we start the loader
 loader.start();
 // then we tell the completer promise what to do when complete
-completer.promise.then(() => loader.stop());
+completer.then(() => loader.stop());
 
 api_call().then(() => button.addEventListener('click', () => {
     // then we resolve the completer, triggering the then callback to stop the loader
-    completer.resolve()
+    completer.complete()
 }));
 ```
 
@@ -88,7 +88,7 @@ const payment = (id: string) => {
 // the provider hook
 const result = (data: { id: string }) => {
     // so then here we complete the users requests since the payment has been confirmed
-    return transactions[data.id].resolve(data);
+    return transactions[data.id].complete(data);
 }
 ```
 
@@ -109,20 +109,14 @@ features, i.e.:
 | `timeout` | Allows you to set a timeout limit on the completer                                     |
 | `error`   | Allows you to apply a custom error to be thrown if the completer comes across an error |
 
-### Properties
-
-
-| Name      | Description                                                   |
-| ----------- | --------------------------------------------------------------- |
-| `promise` | The reference to the promise that is wrapped by the completer |
-
 ### Methods
 
 
-| Name      | Description                                  |
-| ----------- | ---------------------------------------------- |
-| `resolve` | Called when resolving the completer promise. |
-| `reject`  | Called when rejecting the completer promise. |
+| Name                        | Description                                  |
+| ----------------------------- | ---------------------------------------------- |
+| `complete`                  | Called when resolving the completer promise. |
+| `reject`                    | Called when rejecting the completer promise. |
+| `then`, `catch` & `finally` | Extended from the`Promise` class             |
 
 ## Contributions
 
