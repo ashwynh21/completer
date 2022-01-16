@@ -15,5 +15,9 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.4"
   }
 }
