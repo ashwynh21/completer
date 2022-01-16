@@ -19,8 +19,6 @@ Here is a set of use cases:
 
 ### Browser
 
-<hr/>
-
 Let's say you want to run an ```HTTP``` request to some ```API``` that will
 trigger a loader and provide some data so that you can add
 that data to an event listener on some button.
@@ -59,8 +57,6 @@ api_call().then(() => button.addEventListener('click', () => {
 ```
 
 ### NodeJS
-
-<hr/>
 
 let's say you have a series of ```API``` hooks, for instance, a payment set. Say a user triggers
 a payment flow on their ```UI``` and you ```API``` triggers a request to your payment provider.
@@ -119,8 +115,6 @@ features, i.e.:
 | `then`, `catch` & `finally` | Extended from the`Promise` class             |
 
 ## Contributions
-
-<hr/>
 
 This is an open source project, and its pretty simple. Please feel free to make PRs considering any
 ideas that would make this class more sensible and well fleshed out.
