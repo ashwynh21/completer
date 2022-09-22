@@ -48,5 +48,5 @@ export class Completer<T> implements Promise<T> {
     finally(onfinally?: (() => void) | null): Promise<T> {
         return this.promise.finally(onfinally);
     }
-    [Symbol.toStringTag]: string;
+    [Symbol.toStringTag]!: string;
 }
